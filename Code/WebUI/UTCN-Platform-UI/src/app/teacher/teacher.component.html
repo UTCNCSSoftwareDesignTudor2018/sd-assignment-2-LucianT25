@@ -1,3 +1,36 @@
-<p>
-  teacher works!
-</p>
+<div class="container color-dark">
+  <div class="col">
+    <p>Students in {{course.name}} ({{ itemCount }})</p>
+  </div>
+
+  <div class="col">
+      <p>Add course</p>
+  </div>
+</div>
+  
+<div class="container color-light">   
+  <div class="col">
+    <p class = "course-container" *ngFor="let enrollment of enrollmentResponse" (click)="editGrade()">
+      {{enrollment.student.id}} - {{ enrollment.student.name }}: {{ enrollment.grade }}
+    </p>
+  </div>
+
+  <div class="col">
+    <p class = "sm">Generate Report </p>
+    <form>
+        <input type="text" class="txt" name="item" placeholder="Student ID" [(ngModel)]="studentId">
+        <input type="text" class="txt" name="item" placeholder="Year of study" [(ngModel)]="yearOfStudy">
+        <input type="submit" class="btn" value="{{generateText}}" (click)="generateReport()">
+    </form>
+
+    <p class = "sm">Update Grades </p>
+        <form>
+            <input type="text" class="txt" name="stdId" placeholder="Student ID" [(ngModel)]="studentId">
+            <input type="text" class="txt" name="grd" placeholder="Grade" [(ngModel)]="grade">
+            <input type="submit" class="btn" value="{{gradeText}}" (click)="updateGrade()">
+        </form>
+  </div>
+
+  
+</div>
+  

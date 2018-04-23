@@ -12,18 +12,26 @@
   <div class="container color-light">
       
     <div class="col">
-      <p class = "course-container" *ngFor="let course of courses; let i = index" (click)="removeItem()">
-        {{ course }}
+      <p class = "course-container" *ngFor="let enrollment of coursesResponse">
+        {{ enrollment.course.name }}: {{ enrollment.grade }}
       </p>
     </div>
 
     <div class="col">
-        <p class = "sm">Use this form below to enroll to a course.</p>
+        <p class = "sm">Enroll to courses: </p>
   
         <form>
-          <input type="text" class="txt" name="item" placeholder="Course ID..." [(ngModel)]="courseId">
-          <input type="submit" class="btn" value="{{btnText}}" (click)="addItem()">
+            <input type="text" class="txt" name="item" placeholder="Course ID..." [(ngModel)]="courseId">
+            <input type="submit" class="btn" value="{{enrollText}}" (click)="addItem()">
         </form>
-      </div>
-  </div>
+        
+        <p class = "sm">Update info: </p>
+        <form>
+            <p *ngFor="let student of studentResponse">
+                <input type="text" class="txt" name="fn" placeholder="{{student.name}}" [(ngModel)]="name">
+                <input type="text" class="txt" name="ad" placeholder="{{student.address}}" [(ngModel)]="address">
+                <input type="text" class="txt" name="em" placeholder="{{student.email}}" [(ngModel)]="email">
+            </p>
+            <input type="submit" class="btn" value="{{updateText}}" (click)="updateInfo()">
+        </form>
   
