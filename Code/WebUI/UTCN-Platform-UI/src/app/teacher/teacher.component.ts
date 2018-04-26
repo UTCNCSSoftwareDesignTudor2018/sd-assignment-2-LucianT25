@@ -55,7 +55,8 @@ export class TeacherComponent implements OnInit {
   enrollmentResponse : Enrollment[];
   enrollments : Enrollment[];
   grade : number;
-  studentId : string;
+  studentIdreport : string;
+  studentIdgrading : string;
 
   constructor(
     private route: ActivatedRoute, private router : Router,
@@ -78,7 +79,7 @@ export class TeacherComponent implements OnInit {
   }
 
   generateReport() {
-    var toGenerate = JSON.stringify({studentId:this.studentId, year:this.yearOfStudy, course:this.course.id});
+    var toGenerate = JSON.stringify({studentId:this.studentIdreport, year:this.yearOfStudy, course:this.course.id});
     console.log(toGenerate);
 
     let headers = new HttpHeaders();
@@ -89,7 +90,7 @@ export class TeacherComponent implements OnInit {
   }
 
   updateGrade() {
-    var toUpdate = JSON.stringify({studentId:this.studentId, courseId:this.course.id, grade:this.grade});
+    var toUpdate = JSON.stringify({studentId:this.studentIdgrading, courseId:this.course.id, grade:this.grade});
     console.log(toUpdate);
 
     let headers = new HttpHeaders();
