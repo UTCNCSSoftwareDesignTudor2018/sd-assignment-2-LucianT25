@@ -79,7 +79,7 @@ export class TeacherComponent implements OnInit {
   }
 
   generateReport() {
-    var toGenerate = JSON.stringify({studentId:this.studentIdreport, year:this.yearOfStudy, course:this.course.id});
+    var toGenerate = JSON.stringify({studentId:this.studentIdreport, year:this.yearOfStudy});
     console.log(toGenerate);
 
     let headers = new HttpHeaders();

@@ -1,29 +1,16 @@
 package com.utcn.UTCN.Student.Platform.persistence.model;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name="Teacher")
-public class Teacher {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable = false)
+public class StudentToUpdate {
     private int id;
     private String name;
     private String address;
     private String email;
 
-    @OneToOne
-    @JoinColumn(name = "fk_course_id")
-    private Course course;
-
-    public Teacher(int id, String name, String address, String email, Course course) {
+    public StudentToUpdate(int id, String name, String address, String email) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.email = email;
-        this.course = course;
     }
 
     public int getId() {
@@ -35,7 +22,7 @@ public class Teacher {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -56,13 +43,5 @@ public class Teacher {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public Course getCourse() {
-        return course;
-    }
-
-    public void setCourse(Course course) {
-        this.course = course;
     }
 }
